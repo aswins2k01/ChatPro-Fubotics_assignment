@@ -1,0 +1,58 @@
+[
+  {
+    "sender": "user",
+    "text": "hi"
+  },
+  {
+    "sender": "ai",
+    "text": "You said: hi"
+  },
+  {
+    "sender": "user",
+    "text": "hi"
+  },
+  {
+    "sender": "ai",
+    "text": "Hello! How can I assist you today?"
+  },
+  {
+    "sender": "user",
+    "text": "good"
+  },
+  {
+    "sender": "ai",
+    "text": "Glad to hear that! How can I assist you today?"
+  },
+  {
+    "sender": "user",
+    "text": "hi"
+  },
+  {
+    "sender": "ai",
+    "text": "Hello! How can I assist you today?"
+  },
+  {
+    "sender": "user",
+    "text": "45"
+  },
+  {
+    "sender": "ai",
+    "text": "It seems like you've entered \"45.\" Could you please provide more context or specify what you're looking for?"
+  },
+  {
+    "sender": "user",
+    "text": "hi"
+  },
+  {
+    "sender": "ai",
+    "text": "Hello! How can I help you today?"
+  },
+  {
+    "sender": "user",
+    "text": "ok"
+  },
+  {
+    "sender": "ai",
+    "text": "Hi there! How can I assist you today?"
+  }
+]
