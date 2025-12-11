@@ -21,7 +21,7 @@ function App() {
   // --- Fetch Sessions ---
   const fetchSessions = useCallback(async () => {
     try {
-      const res = await axios.get("http://127.0.0.1:5000/sessions");
+      const res = await axios.get("https://chatpro-fubotics-assignment.onrender.com");
       setSessions(res.data);
     } catch (err) {
       console.error("Error fetching sessions:", err);
@@ -35,7 +35,7 @@ function App() {
       return;
     }
     try {
-      const res = await axios.get(`http://127.0.0.1:5000/sessions/${sessionId}`);
+      const res = await axios.get(`https://chatpro-fubotics-assignment.onrender.com/${sessionId}`);
       const formatted = res.data.map(msg => ({
         sender: msg.sender,
         text: msg.content,
@@ -114,7 +114,7 @@ function App() {
   isSendingRef.current = true;
 
   try {
-    const res = await axios.post(`http://127.0.0.1:5000/send/${currentId}`, { message: input });
+    const res = await axios.post(`https://chatpro-fubotics-assignment.onrender.com/send/${currentId}`, { message: input });
 
     const aiMsg = {
       sender: "ai",
@@ -179,7 +179,7 @@ function App() {
               onClick={async e => {
                 e.stopPropagation();
                 try {
-                  await axios.delete(`http://127.0.0.1:5000/sessions/${session.id}`);
+                  await axios.delete(`https://chatpro-fubotics-assignment.onrender.com/sessions/${session.id}`);
                   setSessions(prev => prev.filter(s => s.id !== session.id));
                   if (activeSessionId === session.id) startNewSession();
                 } catch (err) {
