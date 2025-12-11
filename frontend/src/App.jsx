@@ -21,7 +21,7 @@ function App() {
   // --- Fetch Sessions ---
   const fetchSessions = useCallback(async () => {
     try {
-      const res = await axios.get("https://chatpro-fubotics-assignment.onrender.com");
+      const res = await axios.get("https://chatpro-fubotics-assignment.onrender.com/sessions");
       setSessions(res.data);
     } catch (err) {
       console.error("Error fetching sessions:", err);
@@ -35,7 +35,7 @@ function App() {
       return;
     }
     try {
-      const res = await axios.get(`https://chatpro-fubotics-assignment.onrender.com/${sessionId}`);
+      const res = await axios.get(`https://chatpro-fubotics-assignment.onrender.com/sessions/${sessionId}`);
       const formatted = res.data.map(msg => ({
         sender: msg.sender,
         text: msg.content,
