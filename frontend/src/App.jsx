@@ -129,8 +129,7 @@ const sendMessage = async () => {
   ]);
 
   try {
-    const res = await axios.post(
-      `https://chatpro-fubotics-assignment.onrender.com/${currentId}`,
+    const res = await axios.post(`https://chatpro-fubotics-assignment.onrender.com/send/${currentId}`,
       { message: userText }
     );
 
@@ -195,7 +194,7 @@ await fetchMessages(currentId);  // load chat every time
               onClick={async e => {
                 e.stopPropagation();
                 try {
-                  await axios.delete(`https://chatpro-fubotics-assignment.onrender.com/${session.id}`);
+                  await axios.delete(`https://chatpro-fubotics-assignment.onrender.com/sessions/${session.id}`);
                   setSessions(prev => prev.filter(s => s.id !== session.id));
                   if (activeSessionId === session.id) startNewSession();
                 } catch (err) {
