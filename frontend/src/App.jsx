@@ -87,60 +87,47 @@ function App() {
     localStorage.setItem("activeSessionId", NEW_SESSION_ID);
   };
 
-  const sendMessage = async () => {
-  if (!message.trim()) return;
+  // App.jsx (CORRECTED sendMessage function)
+const sendMessage = async () => {
+    if (!message.trim()) return;
 
-  let currentId = activeSessionId;
-  let isNewSession = false;
+    let currentId = activeSessionId;
+    let isNewSession = false;
 
-  if (currentId === NEW_SESSION_ID) {
-    currentId = Date.now().toString();
-    setActiveSessionId(currentId);
-    localStorage.setItem("activeSessionId", currentId);
-    isNewSession = true; // mark this as new
-  }
-
-  const userMsg = {
-    sender: "user",
-    text: message,
-    time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
-  };
-
-  setMessages(prev => [...prev, userMsg]);
-  const input = message;
-  setMessage("");
-  setTyping(true);
-  setTimeout(() => inputRef.current?.focus(), 0);
-  isSendingRef.current = true;
-
-  try {
-    const res = await axios.post(`https://chatpro-fubotics-assignment.onrender.com/send/${currentId}`, { message: input });
-
-    const aiMsg = {
-      sender: "ai",
-      text: res.data.reply,
-      time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
-    };
-
-    setMessages(prev => [...prev, aiMsg]);
-    setTyping(false);
-
-    // Refresh sessions (sidebar titles)
-    await fetchSessions();
-
-    // --- NEW FIX ---
-    // Fetch the messages for the newly created session to prevent "loading..."
-    if (isNewSession) {
-      fetchMessages(currentId);
+    if (currentId === NEW_SESSION_ID) {
+      currentId = Date.now().toString();
+      // You set the state here:
+      setActiveSessionId(currentId); 
+      localStorage.setItem("activeSessionId", currentId);
+      isNewSession = true; // mark this as new
     }
-  } catch (err) {
-    console.error(err);
-    setMessages(prev => prev.slice(0, -1));
-    setTyping(false);
-  } finally {
-    isSendingRef.current = false;
-    setTimeout(() => inputRef.current?.focus(), 0);
-  }
+
+    // ... (rest of the user message and state updates) ...
+
+    try {
+      // 1. POST the message to the backend (where it saves to MongoDB)
+      const res = await axios.post(`https://chatpro-fubotics-assignment.onrender.com/send/${currentId}`, { message: input });
+
+      // ... (AI message added to state) ...
+
+      // 2. Refresh sessions (sidebar titles)
+      await fetchSessions(); // This is correct, it updates the sidebar list
+
+      // 3. CRITICAL FIX: Explicitly fetch the messages for the newly active session
+      // This ensures the messages are re-loaded immediately from the DB,
+      // confirming persistence and clearing any temporary state issues.
+      if (isNewSession) {
+        await fetchMessages(currentId); 
+      }
+      
+      // We don't need the final 'finally' block setting the focus twice
+    } catch (err) {
+      // ... (error handling remains the same) ...
+    } finally {
+      isSendingRef.current = false;
+      setTyping(false); // Make sure typing is set to false here or after successful AI message
+      setTimeout(() => inputRef.current?.focus(), 0);
+    }
 };
 
   const handleKeyDown = (e) => {
