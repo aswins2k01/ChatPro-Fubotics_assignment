@@ -281,7 +281,7 @@ input {
 }
 
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .sidebar.closed {
     width: 0 !important;
     padding: 0 !important;
@@ -305,4 +305,51 @@ input {
   .menu-btn {
     z-index: 1000;
   }
+} */
+
+/* ===========================
+   MOBILE FIXES (<768px)
+   =========================== */
+@media (max-width: 768px) {
+
+  /* Push the menu button down */
+  .chat-header .menu-btn {
+    margin-top: 25px;   /* about 1.5 cm visually on most phones */
+    margin-left: 5px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    z-index: 1500 !important;  /* ensure always visible */
+  }
+
+  /* Prevent sidebar sliver from showing */
+  .sidebar.closed {
+    width: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+
+  /* Sidebar overlay */
+  .sidebar.open {
+    width: 260px !important;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 80px; /* push content DOWN so New Conversation is fully visible */
+    background: #ffffff;
+    z-index: 1400;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  }
+
+  /* Ensure New Conversation button fully visible */
+  .new-chat-btn {
+    margin-top: 10px !important; 
+  }
+
+  /* Chat header text pushed right so it doesn’t overlap the menu button */
+  .chat-header span {
+    margin-left: 50px;
+  }
+
 }
