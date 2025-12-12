@@ -307,49 +307,62 @@ input {
   }
 } */
 
+
+
+
 /* ===========================
    MOBILE FIXES (<768px)
    =========================== */
 @media (max-width: 768px) {
 
-  /* Push the menu button down */
-  .chat-header .menu-btn {
-    margin-top: 25px;   /* about 1.5 cm visually on most phones */
-    margin-left: 5px;
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    z-index: 1500 !important;  /* ensure always visible */
+  /* Increase header height so menu button is not clipped */
+  .chat-header {
+    padding-top: 45px !important;
+    padding-bottom: 15px;
+    height: auto;
+    position: relative;
   }
 
-  /* Prevent sidebar sliver from showing */
+  /* Make menu button fully visible + pushed down */
+  .chat-header .menu-btn {
+    position: absolute;
+    top: 12px;      /* further down — prevents clipping */
+    left: 10px;
+    z-index: 1500 !important;
+    font-size: 24px;
+    display: block;
+    opacity: 1 !important;
+  }
+
+  /* Sidebar closed state - hide fully */
   .sidebar.closed {
     width: 0 !important;
     padding: 0 !important;
     border: none !important;
   }
 
-  /* Sidebar overlay */
+  /* Sidebar open: overlay */
   .sidebar.open {
     width: 260px !important;
     height: 100%;
     position: fixed;
     top: 0;
     left: 0;
-    padding-top: 80px; /* push content DOWN so New Conversation is fully visible */
+    padding-top: 100px; /* ensure New Chat fully visible below close btn */
     background: #ffffff;
     z-index: 1400;
     box-shadow: 2px 0 10px rgba(0,0,0,0.1);
   }
 
-  /* Ensure New Conversation button fully visible */
+  /* Ensure New Chat button visible without overlap */
   .new-chat-btn {
-    margin-top: 10px !important; 
+    margin-top: 10px !important;
   }
 
-  /* Chat header text pushed right so it doesn’t overlap the menu button */
+  /* Push chat title right so it doesn't overlap menu btn */
   .chat-header span {
-    margin-left: 50px;
+    margin-left: 60px !important;
   }
-
 }
+
+
