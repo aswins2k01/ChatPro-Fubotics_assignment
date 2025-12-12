@@ -315,27 +315,35 @@ input {
 
 @media (max-width: 768px) {
 
-  /* Make header taller so nothing gets clipped */
+@media (max-width: 768px) {
+
   .chat-header {
-    height: 85px !important;
+    padding-top: calc( env(safe-area-inset-top) + 22px ) !important;
+    height: auto !important;
+    min-height: 80px !important;
     display: flex;
     align-items: center;
-    padding-left: 55px; /* space for the menu button */
+    gap: 10px;
+    position: relative;
+    background: white;
+    z-index: 2000;
   }
 
-  /* Make menu button visible and moved slightly down */
   .chat-header .menu-btn {
     position: absolute;
-    top: 22px;      /* around 1.5cm visually */
     left: 15px;
-    z-index: 9999 !important;
+    top: calc( env(safe-area-inset-top) + 12px );
+    z-index: 3000;
   }
 
-  /* Title should not overlap button */
   .chat-header span {
+    margin-left: 55px !important;
     font-size: 18px;
     display: inline-block;
   }
+
+}
+
 
   /* Prevent sidebar sliver */
   .sidebar.closed {
