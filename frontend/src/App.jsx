@@ -52,6 +52,14 @@ function App() {
     }
   }, []);
 
+  //just added
+  useEffect(() => {
+  if (window.innerWidth < 768) {
+    setIsSidebarOpen(false);
+  }
+}, []);
+
+
   // --- Restore Active Session on Mount ---
   useEffect(() => {
   const loadEverything = async () => {

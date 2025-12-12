@@ -262,7 +262,7 @@ input {
   color: red;
 }
 
-/* App.css (Add this to the end of your file) */
+/* App.css (Add this to the end of your file) just added */
 
 /* Active style for the New Chat button when a new session is selected */
 .new-chat-btn.active {
@@ -278,4 +278,31 @@ input {
   0% { opacity: 0.3; }
   50% { opacity: 1; }
   100% { opacity: 0.3; }
+}
+
+
+@media (max-width: 768px) {
+  .sidebar.closed {
+    width: 0 !important;
+    padding: 0 !important;
+  }
+
+  .sidebar.open {
+    width: 250px !important;
+    position: absolute;
+    z-index: 999; 
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: white;
+  }
+
+  .main-content {
+    position: relative;
+    width: 100%;
+  }
+
+  .menu-btn {
+    z-index: 1000;
+  }
 }
