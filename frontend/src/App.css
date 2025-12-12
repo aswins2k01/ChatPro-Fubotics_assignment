@@ -313,36 +313,31 @@ input {
    =========================== */
  
 
-
-/* MOBILE HEADER FIX */
 @media (max-width: 768px) {
 
-  /* Increase chat header height */
+  /* Make header taller so nothing gets clipped */
   .chat-header {
-    height: 70px !important;
-    padding-top: 18px !important;
-    position: relative;
-    overflow: visible !important;
+    height: 85px !important;
+    display: flex;
+    align-items: center;
+    padding-left: 55px; /* space for the menu button */
   }
 
-  /* Fix menu button visibility */
+  /* Make menu button visible and moved slightly down */
   .chat-header .menu-btn {
     position: absolute;
-    top: 18px;
-    left: 12px;
-    z-index: 2000 !important;
-    opacity: 1 !important;
+    top: 22px;      /* around 1.5cm visually */
+    left: 15px;
+    z-index: 9999 !important;
   }
 
-  /* Push chat title right of menu button */
+  /* Title should not overlap button */
   .chat-header span {
-    margin-left: 48px !important;
-    margin-top: 4px;
+    font-size: 18px;
     display: inline-block;
   }
 
-
-  /* Prevent sidebar sliver from showing */
+  /* Prevent sidebar sliver */
   .sidebar.closed {
     width: 0 !important;
     padding: 0 !important;
@@ -356,15 +351,9 @@ input {
     position: fixed;
     top: 0;
     left: 0;
-    padding-top: 80px; /* push content DOWN so New Conversation is fully visible */
+    padding-top: 80px;
     background: #ffffff;
     z-index: 1400;
     box-shadow: 2px 0 10px rgba(0,0,0,0.1);
   }
-
-  /* Ensure New Conversation button fully visible */
-  .new-chat-btn {
-    margin-top: 10px !important; 
-  }
-
-}  
+}
