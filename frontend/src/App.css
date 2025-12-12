@@ -1,4 +1,6 @@
 
+
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,6 +11,7 @@ html, body, #root {
   height: 100%;
   width: 100%;
   overflow: hidden;
+  padding-top: env(safe-area-inset-top);
 }
 
 body {
@@ -313,7 +316,7 @@ input {
    =========================== */
  
 
-@media (max-width: 768px) {
+
 
 @media (max-width: 768px) {
 
@@ -342,7 +345,9 @@ input {
     display: inline-block;
   }
 
-}
+.app-container {
+    padding-top: calc(env(safe-area-inset-top) + 15px);
+  }
 
 
   /* Prevent sidebar sliver */
@@ -364,4 +369,5 @@ input {
     z-index: 1400;
     box-shadow: 2px 0 10px rgba(0,0,0,0.1);
   }
+
 }
