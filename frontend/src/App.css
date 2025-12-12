@@ -346,7 +346,7 @@ input {
   }
 
 .app-container {
-    padding-top: calc(env(safe-area-inset-top) + 15px);
+    padding-top: calc(env(safe-area-inset-top) + 50px);
   }
 
 
