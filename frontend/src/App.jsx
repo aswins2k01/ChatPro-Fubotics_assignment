@@ -52,12 +52,14 @@ function App() {
     }
   }, []);
 
-  //just added
+  //just added for mobile
   useEffect(() => {
   if (window.innerWidth < 768) {
     setIsSidebarOpen(false);
   }
 }, []);
+
+
 
 
   // --- Restore Active Session on Mount ---
@@ -103,6 +105,7 @@ setIsSidebarOpen(false);
     setActiveSessionId(NEW_SESSION_ID);
     setMessages([]);
     localStorage.setItem("activeSessionId", NEW_SESSION_ID);
+    setIsSidebarOpen(false);
   };
 
   // App.jsx (CORRECTED sendMessage function)

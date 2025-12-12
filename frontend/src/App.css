@@ -284,33 +284,6 @@ input {
 }
 
 
-/* @media (max-width: 768px) {
-  .sidebar.closed {
-    width: 0 !important;
-    padding: 0 !important;
-  }
-
-  .sidebar.open {
-    width: 250px !important;
-    position: absolute;
-    z-index: 999; 
-    height: 100%;
-    left: 0;
-    top: 0;
-    background: white;
-  }
-
-  .main-content {
-    position: relative;
-    width: 100%;
-  }
-
-  .menu-btn {
-    z-index: 1000;
-  }
-} */
-
-
 /* ===========================
    MOBILE FIXES (<768px)
    =========================== */
