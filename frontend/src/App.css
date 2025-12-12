@@ -315,24 +315,13 @@ input {
 
   
  /* REPLACE ONLY the .chat-header .menu-btn rule with this */
-.chat-header {
-  position: relative; /* ensure absolute child positions are relative to header */
-  overflow: visible;  /* prevent clipping of absolutely positioned button */
-}
+
 
 .chat-header .menu-btn {
-  position: absolute;
-  left: 12px;
-  /* push down ~1.5cm visually while accounting for device notch/statusbar */
-  top: calc(18px + env(safe-area-inset-top)); 
+  margin-top: 30px;      /* push downward ~1.5 cm */
+  margin-left: 5px;
+  position: relative;    /* <<< this is the important fix */
   z-index: 1500 !important;
-  font-size: 20px;      /* keep size clear but not huge */
-  line-height: 1;
-  padding: 6px 8px;     /* small padding for larger touch target */
-  background: transparent;
-  border: none;
-  opacity: 1;
-  -webkit-tap-highlight-color: transparent;
 }
 
 
